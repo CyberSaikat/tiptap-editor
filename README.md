@@ -1,7 +1,7 @@
 # 📝 Tiptap Editor
-<p align="center">
-  <img src="https://raw.githubusercontent.com/CyberSaikat/tiptap-editor/main/public/images/banner.png" alt="Leading Image" width="100%">
-</p>
+
+![Leading Image](https://raw.githubusercontent.com/CyberSaikat/tiptap-editor/main/public/images/banner.png)
+
 A customizable and feature-rich text editor built with Tiptap and React, and designed for seamless integration with Next.js using the App Router.
 
 ## ✨ Features
