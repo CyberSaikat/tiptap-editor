@@ -1,4 +1,17 @@
+@media (max-width: 970px) {
+  .tool-container{
+    height: 50vh !important;
+  }
+}
 .tiptap {
+  margin-top: 5rem;
+  margin-bottom: 1.4rem;
+  @media (max-width: 970px) {
+    margin-top: 10rem;
+  }
+  @media (max-width: 660px) {
+    margin-top: 15rem;
+  }
   :first-child {
     margin-top: 0;
   }

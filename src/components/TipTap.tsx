@@ -183,9 +183,9 @@ export default function Tiptap() {
                     "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl focus:outline-none min-h-[200px] p-4 border border-2 border-gray-300 rounded-b-md focus:border-blue-500",
             },
         },
-        onUpdate: ({editor}) => {
-            console.log(editor.getHTML());
-        },
+        // onUpdate: ({editor}) => {
+        //     console.log(editor.getHTML());
+        // },
         immediatelyRender: false,
     });
 
@@ -195,10 +195,8 @@ export default function Tiptap() {
 
     return (
         <>
-            <div className={`relative w-full`}>
-                <MenuBar editor={editor}/>
-                <EditorContent editor={editor} className={`w-full mt-[80px]`}/>
-            </div>
+                <MenuBar editor={editor} />
+                <EditorContent editor={editor} className={`w-full z-0 mt-40`}/>
         </>
     );
 }

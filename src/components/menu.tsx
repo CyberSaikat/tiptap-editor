@@ -426,7 +426,8 @@ export const MenuBar = ({
   }
 
   return (
-    <div className="flex flex-wrap gap-2 p-2 rounded-t-lg bg-gray-200 border-b-2 border-primary fixed w-[98%] z-50 top-5 left-1/2 -translate-x-1/2">
+    <div className="tool-container bg-[hsl(var(--background))] fixed top-0 left-1/2 -translate-x-1/2 min-h-[33vh] w-full z-10 flex items-end justify-center">
+    <div className="flex flex-wrap gap-2 p-2 rounded-t-lg bg-gray-200 border-b-2 border-primary w-[96%]">
       {groups.map((group, groupIndex) => (
         <div
           key={groupIndex}
@@ -483,6 +484,7 @@ export const MenuBar = ({
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 };
