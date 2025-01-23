@@ -1,6 +1,6 @@
 # 📝 Tiptap Editor
 
-![Leading Image](https://raw.githubusercontent.com/CyberSaikat/tiptap-editor/main/public/images/banner.png)
+![Leading Image](https://raw.githubusercontent.com/sculptorofcode/tiptap-editor/main/public/images/banner.png)
 
 A customizable and feature-rich text editor built with Tiptap and React, and designed for seamless integration with Next.js using the App Router.
 
@@ -30,7 +30,7 @@ To set up the Tiptap Editor with a Next.js project, follow these steps:
 
 1. **Clone the Repository:** Copy the repository to your local machine.
     ```bash
-   git clone https://github.com/CyberSaikat/tiptap-editor.git
+   git clone https://github.com/sculptorofcode/tiptap-editor.git
    ```
 2. **Navigate to the Project Directory:** Move into the project directory.
     ```bash
