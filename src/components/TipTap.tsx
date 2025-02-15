@@ -3,7 +3,7 @@
 import "./styles.scss";
 
 import React, { useEffect } from "react";
-import {useEditor, EditorContent, Editor, FloatingMenu} from "@tiptap/react";
+import { useEditor, EditorContent, Editor, FloatingMenu } from "@tiptap/react";
 import Paragraph from "@tiptap/extension-paragraph";
 import Heading from "@tiptap/extension-heading";
 import Link from "@tiptap/extension-link";
@@ -25,7 +25,7 @@ import Bold from "@tiptap/extension-bold";
 import TextAlign from "@tiptap/extension-text-align";
 import CodeBlock from "@tiptap/extension-code-block";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
-import {MenuBar} from "./menu";
+import { MenuBar } from "./menu";
 import OrderedList from "@tiptap/extension-ordered-list";
 import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
@@ -46,7 +46,7 @@ export default function Tiptap() {
             Heading.configure({
                 levels: [1, 2, 3, 4, 5, 6],
             }).extend({
-                renderHTML({node, HTMLAttributes}) {
+                renderHTML({ node, HTMLAttributes }) {
                     const level = node.attrs.level as 1 | 2 | 3 | 4 | 5 | 6;
                     const classMap: Record<typeof level, string> = {
                         1: "text-3xl font-bold mb-4 tiptap_heading_1",
@@ -59,7 +59,7 @@ export default function Tiptap() {
 
                     return [
                         `h${level}`,
-                        {...HTMLAttributes, class: classMap[level]},
+                        { ...HTMLAttributes, class: classMap[level] },
                         0,
                     ];
                 },
@@ -183,9 +183,6 @@ export default function Tiptap() {
                     "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl focus:outline-none min-h-[200px] p-4 border border-2 border-gray-300 rounded-b-md focus:border-blue-500",
             },
         },
-        // onUpdate: ({editor}) => {
-        //     console.log(editor.getHTML());
-        // },
         immediatelyRender: false,
     });
 
@@ -195,8 +192,8 @@ export default function Tiptap() {
 
     return (
         <>
-                <MenuBar editor={editor} />
-                <EditorContent editor={editor} className={`w-full z-0 mt-40`}/>
+            <MenuBar editor={editor} />
+            <EditorContent editor={editor} className={`w-full z-0`} id="parent" />
         </>
     );
 }

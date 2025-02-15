@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BubbleMenu, Editor, FloatingMenu } from "@tiptap/react";
 import { MdFormatListBulleted, MdFormatListBulletedAdd } from "react-icons/md";
 import { SlActionRedo, SlActionUndo } from "react-icons/sl";
@@ -365,11 +365,10 @@ export const MenuBar = ({
                             data-tip={button.tooltipText}
                             onClick={button.action}
                             type="button"
-                            className={`px-3 py-1 rounded transition-colors shadow border border-accent ${
-                              button.isActive()
-                                ? "text-white"
-                                : "bg-white hover:bg-gray-200 text-accent"
-                            }`}
+                            className={`px-3 py-1 rounded transition-colors shadow border border-accent ${button.isActive()
+                              ? "text-white"
+                              : "bg-white hover:bg-gray-200 text-accent"
+                              }`}
                           >
                             {button.icon}
                           </Button>
@@ -403,11 +402,10 @@ export const MenuBar = ({
                           data-tip={button.tooltipText}
                           onClick={button.action}
                           type="button"
-                          className={`px-3 py-1 rounded transition-colors border ${
-                            button.isActive()
-                              ? "text-white"
-                              : "bg-white hover:bg-gray-200 text-accent"
-                          }`}
+                          className={`px-3 py-1 rounded transition-colors border ${button.isActive()
+                            ? "text-white"
+                            : "bg-white hover:bg-gray-200 text-accent"
+                            }`}
                         >
                           {button.icon}
                         </Button>
@@ -425,66 +423,75 @@ export const MenuBar = ({
     );
   }
 
+  useEffect(() => {
+    const parent = document.getElementById('parent');
+    const child = document.getElementById('child');
+    if (parent && child) {
+      parent.style.paddingTop = child.clientHeight + 'px';
+
+    }
+  })
+
   return (
-    <div className="tool-container bg-[hsl(var(--background))] fixed top-0 left-1/2 -translate-x-1/2 min-h-[33vh] w-full z-10 flex items-end justify-center">
-    <div className="flex flex-wrap gap-2 p-2 rounded-t-lg bg-gray-200 border-b-2 border-primary w-[96%]">
-      {groups.map((group, groupIndex) => (
-        <div
-          key={groupIndex}
-          className={`flex flex-col gap-1 ${
-            groups[groupIndex + 1] ? `border-r` : ""
-          } pr-2 border-primary`}
-        >
-          <div className="text-xs font-semibold text-gray-700 tracking-wide text-center">
-            {group.label}
-          </div>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {group.label === "Text Formatting" && (
-              <div className={`flex gap-2`}>
-                <select
-                  className={`px-3 py-1 rounded border border-gray-300`}
-                  onChange={(e) => {
-                    editor.chain().focus().setFontFamily(e.target.value).run();
-                  }}
-                >
-                  <option value="Arial">Arial</option>
-                  <option value="Courier New">Courier New</option>
-                  <option value="Georgia">Georgia</option>
-                  <option value="Times New Roman">Times New Roman</option>
-                  <option value="Verdana">Verdana</option>
-                  <option value="Comic Sans MS">Comic Sans MS</option>
-                </select>
+    <div className="w-full bg-[hsl(var(--background))] relative z-10">
+      <div className="fixed left-1/2 -translate-x-1/2 bg-white w-full grid place-content-center pt-5 px-12" id="child">
+        <div className="flex flex-wrap gap-2 p-2 rounded-t-lg bg-gray-200 border-2 border-b-0">
+          {groups.map((group, groupIndex) => (
+            <div
+              key={groupIndex}
+              className={`flex flex-col gap-1 ${groups[groupIndex + 1] ? `border-r` : ""
+                } pr-2 border-primary`}
+            >
+              <div className="text-xs font-semibold text-gray-700 tracking-wide text-center">
+                {group.label}
               </div>
-            )}
-            {group.buttons.map((button, buttonIndex) => (
-              <div key={buttonIndex}>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        data-tip={button.tooltipText}
-                        onClick={button.action}
-                        type="button"
-                        className={`px-3 py-1 rounded transition-colors ${
-                          button.isActive()
-                            ? "text-white"
-                            : "bg-white hover:bg-gray-200 text-info"
-                        }`}
-                      >
-                        {button.icon}
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{button.tooltipText}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {group.label === "Text Formatting" && (
+                  <div className={`flex gap-2`}>
+                    <select
+                      className={`px-3 py-1 rounded border border-gray-300`}
+                      onChange={(e) => {
+                        editor.chain().focus().setFontFamily(e.target.value).run();
+                      }}
+                    >
+                      <option value="Arial">Arial</option>
+                      <option value="Courier New">Courier New</option>
+                      <option value="Georgia">Georgia</option>
+                      <option value="Times New Roman">Times New Roman</option>
+                      <option value="Verdana">Verdana</option>
+                      <option value="Comic Sans MS">Comic Sans MS</option>
+                    </select>
+                  </div>
+                )}
+                {group.buttons.map((button, buttonIndex) => (
+                  <div key={buttonIndex}>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            data-tip={button.tooltipText}
+                            onClick={button.action}
+                            type="button"
+                            className={`px-3 py-1 rounded transition-colors ${button.isActive()
+                              ? "text-white"
+                              : "bg-white hover:bg-gray-200 text-info"
+                              }`}
+                          >
+                            {button.icon}
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{button.tooltipText}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
     </div>
   );
 };
