@@ -29,7 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`p-5`}>{children}</body>
+      <body>
+        {children}
+         <script src="/js/screen_restriction.js"></script>
+      </body>
     </html>
   );
 }
