@@ -423,15 +423,6 @@ export const MenuBar = ({
     );
   }
 
-  useEffect(() => {
-    const parent = document.getElementById('parent');
-    const child = document.getElementById('child');
-    if (parent && child) {
-      parent.style.paddingTop = child.clientHeight + 'px';
-
-    }
-  })
-
   return (
     <div className="w-full bg-[hsl(var(--background))] relative z-10">
       <div className="fixed left-1/2 -translate-x-1/2 bg-white w-full grid place-content-center pt-5 px-12" id="child">

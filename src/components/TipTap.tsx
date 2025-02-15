@@ -34,6 +34,15 @@ import TableRow from "@tiptap/extension-table-row";
 
 export default function Tiptap() {
 
+    useEffect(() => {
+        const parent = document.getElementById('parent');
+        const child = document.getElementById('child');
+        if (parent && child) {
+            parent.style.paddingTop = child.clientHeight + 'px';
+
+        }
+    });
+
     const editor = useEditor({
         extensions: [
             Document,
